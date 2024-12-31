@@ -1,0 +1,28 @@
+const express = require('express');
+const bodyParser = require('body-parser');
+
+const app = express();
+app.use(bodyParser.json());
+
+let energyData = []; // Data dummy untuk energi IoT
+
+// Endpoint untuk menambahkan data energi
+app.post('/add-energy', (req, res) => {
+    const { deviceId, energyProduced } = req.body;
+    energyData.push({ deviceId, energyProduced, timestamp: new Date() });
+    res.send({ message: 'Data added successfully' });
+});
+
+// Endpoint untuk mendapatkan data energi
+app.get('/get-energy', (req, res) => {
+    res.send(energyData);
+});
+
+// Endpoint untuk mendapatkan rekomendasi harga (dummy)
+app.get('/recommend-price', (req, res) => {
+    const price = Math.random() * 10; // Harga acak untuk demo
+    res.send({ recommendedPrice: price });
+});
+
+const PORT = 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
