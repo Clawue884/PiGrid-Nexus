@@ -1,0 +1,34 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract PiGridMarketplace {
+    struct EnergyListing {
+        uint256 id;
+        address seller;
+        uint256 amount; // Energy in kWh
+        uint256 price;  // Price in Pi Coin
+        bool isSold;
+    }
+
+    uint256 public listingCount = 0;
+    mapping(uint256 => EnergyListing) public listings;
+
+    event EnergyListed(uint256 id, address seller, uint256 amount, uint256 price);
+    event EnergySold(uint256 id, address buyer);
+
+    function listEnergy(uint256 amount, uint256 price) public {
+        listingCount++;
+        listings[listingCount] = EnergyListing(listingCount, msg.sender, amount, price, false);
+        emit EnergyListed(listingCount, msg.sender, amount, price);
+    }
+
+    function buyEnergy(uint256 id) public payable {
+        EnergyListing storage listing = listings[id];
+        require(!listing.isSold, "Energy already sold");
+        require(msg.value >= listing.price, "Insufficient payment");
+
+        listing.isSold = true;
+        payable(listing.seller).transfer(msg.value);
+        emit EnergySold(id, msg.sender);
+    }
+}
