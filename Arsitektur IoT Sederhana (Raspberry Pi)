@@ -1,0 +1,16 @@
+import requests
+import random
+
+API_URL = "http://localhost:3000/add-energy"
+
+# Simulasi Data Energi
+device_id = "RaspberryPi_01"
+energy_produced = random.uniform(5.0, 15.0)  # kWh
+
+# Kirim Data ke API
+response = requests.post(API_URL, json={
+    "deviceId": device_id,
+    "energyProduced": energy_produced
+})
+
+print(f"Response: {response.json()}")
