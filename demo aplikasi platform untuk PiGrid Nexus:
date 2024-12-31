@@ -1,0 +1,52 @@
+Rancangan Demo
+
+Aplikasi demo akan memiliki fitur berikut:
+
+1. Antarmuka Web Marketplace Energi:
+
+Pengguna dapat mendaftarkan energi untuk dijual.
+
+Pengguna dapat membeli energi yang tersedia.
+
+
+
+2. Visualisasi Data IoT:
+
+Tampilan data energi real-time dari perangkat IoT.
+
+
+
+3. Prediksi Kebutuhan Energi:
+
+Menggunakan AI agent untuk menampilkan prediksi kebutuhan energi di antarmuka.
+
+
+
+
+
+---
+
+Teknologi untuk Demo
+
+Frontend: React.js
+
+Backend: Node.js dengan API Express.js
+
+Database: MongoDB (untuk menyimpan data transaksi)
+
+Model AI: TensorFlow.js untuk prediksi di browser
+
+
+
+---
+
+Langkah Implementasi
+
+1. Struktur Proyek
+
+PiGrid-Nexus-Demo/
+├── client/            # Frontend React.js
+├── server/            # Backend Node.js
+├── contracts/         # Smart Contracts
+├── ai_agent/          # Model AI TensorFlow.js
+├── README.md          # Dokumentasi proyek
