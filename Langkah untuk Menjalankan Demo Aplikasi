@@ -1,0 +1,35 @@
+1. Clone Repositori Proyek
+
+Salin kode proyek dari GitHub (atau buat repositori baru). Jika Anda memerlukan bantuan untuk mengunggah proyek ke GitHub, beri tahu saya.
+
+2. Instalasi Backend
+
+1. Masuk ke folder server dan instal dependensi:
+
+cd server
+npm install
+
+
+2. Jalankan backend:
+
+node index.js
+
+
+
+3. Instalasi Frontend
+
+1. Masuk ke folder client dan instal dependensi:
+
+cd client
+npm install
+
+
+2. Jalankan aplikasi React.js:
+
+npm start
+
+
+
+4. Akses Aplikasi
+
+Buka browser dan akses http://localhost:3000 untuk mencoba aplikasi.
