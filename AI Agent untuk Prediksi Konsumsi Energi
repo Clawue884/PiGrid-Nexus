@@ -1,0 +1,29 @@
+import numpy as np
+import tensorflow as tf
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+
+# Data Dummy: Konsumsi energi (input: jam, output: kebutuhan energi kWh)
+data = np.array([[0, 10], [1, 20], [2, 15], [3, 25], [4, 30], [5, 35]])
+x_train = data[:, 0].reshape(-1, 1)  # Jam
+y_train = data[:, 1]  # Energi
+
+# Model Prediksi
+model = Sequential([
+    Dense(32, activation='relu', input_shape=(1,)),
+    Dense(32, activation='relu'),
+    Dense(1)
+])
+model.compile(optimizer='adam', loss='mse')
+
+# Training Model
+model.fit(x_train, y_train, epochs=100, verbose=0)
+
+# Prediksi Konsumsi Energi
+def predict_energy(hour):
+    prediction = model.predict(np.array([[hour]]))
+    return prediction[0][0]
+
+# Contoh Prediksi
+hour = 6
+print(f"Prediksi kebutuhan energi pada jam {hour}: {predict_energy(hour):.2f} kWh")
